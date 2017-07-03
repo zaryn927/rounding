@@ -36,7 +36,7 @@ public class Rounder {
     value = Math.abs(value);
     increment = Math.abs(increment);
     int truncated = value / increment;
-    int remainder = value % increment;
+    int remainder = ((sign >= 0) ? value % increment : Math.floorMod(value, increment)) ;
     int rounded = truncated * increment;
     int adjustment = (2 * remainder >= increment) ? increment : 0;
     return sign * (rounded + adjustment);
